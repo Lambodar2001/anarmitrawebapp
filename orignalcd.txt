@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="TemplateMo">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
+    <title>Zeal</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barriecito&family=La+Belle+Aurore&family=Loved+by+the+King&family=Protest+Revolution&family=Zeyada&display=swap" rel="stylesheet">
+<!--
+
+
+
+-->
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/font-awesome.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/templatemo-lava.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/owl-carousel.css') }}">
+
+    <style>
+
+        .left-texta {
+            position: relative;
+            align-self: center;
+            margin-top: 35%;
+            margin-left: 40%;
+            margin-left: 50px;
+            transform: perspective(1px) translateY(-30%) !important;
+          }
+
+
+          .my-custom-input {
+            font-size: 12px;
+            border-radius: 25px;
+            padding: 15px 25px;
+            background-color: #fba70b;
+            text-transform: uppercase;
+            color: #fff;
+            font-weight: 600;
+            letter-spacing: 1px;
+            -webkit-transition: all 0.3s ease 0s;
+            -moz-transition: all 0.3s ease 0s;
+            -o-transition: all 0.3s ease 0s;
+            transition: all 0.3s ease 0s;
+        }
+
+        
+        .my-custom-inputin {
+            font-size: 12px;
+            border-radius: 25px;
+            padding: 5px 5px;
+            background-color: #fba70b30;
+            text-transform: uppercase;
+            color: #fff;
+            font-weight: 600;
+            letter-spacing: 1px;
+            -webkit-transition: all 0.3s ease 0s;
+            -moz-transition: all 0.3s ease 0s;
+            -o-transition: all 0.3s ease 0s;
+            transition: all 0.3s ease 0s;
+        }
+
+
+        .my-custom-label {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 10px;
+            transition-duration: 0.4s;
+        }
+        
+        .my-custom-label:hover {
+            background-color: #45a049; /* Darker Green */
+        }
+        
+        .my-custom-inputin {
+            display: none;
+        }
+        
+       
+
+       
+        
+          
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- ***** Preloader Start ***** -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <!-- ***** Preloader End ***** -->
+
+
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav"> 
+                        <!-- ***** Logo Start ***** -->
+                        <a href="{{ url_for('index') }}" class="logo">
+                            <img src="{{ url_for('static', filename='images/pimg.png') }}" alt="Logo">
+                        </a>
+                        <!-- ***** Logo End ***** -->
+                        
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li class="scroll-to-section"><a href="#welcome" class="menu-item">Home</a></li>
+                            <li class="scroll-to-section"><a href="#about" class="menu-item">About</a></li>
+                            <li class="scroll-to-section"><a href="#testimonials" class="menu-item">Group</a></li>
+                            <li class="scroll-to-section"><a href="#contact-us" class="menu-item">Project Report</a></li>
+                        </ul>
+                        <!-- ***** Menu End ***** -->
+                        
+                        <a class="menu-trigger">
+                            <span>Menu</span>
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+
+
+
+
+
+    <div class="left-image-decor"></div>
+
+    
+    <!-- ***** Features Big Item End ***** -->
+
+    <section class="section" id="promotion" style="margin-top:7%">
+        <div class="container">
+            <div class="row">
+                <div class="left-image col-lg-5 col-md-12 col-sm-12 mobile-bottom-fix-big"
+                    data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
+
+
+
+                    <form action="/predict_datapoint" method="post" enctype="multipart/form-data" class="rounded img-fluid d-block mx-auto">
+                        <label for="image" class="main-button-slider-label my-custom-label">
+                            <input type="file" name="image" id="image" accept="image/*" onchange="loadFile(event)" class="main-button-slider my-custom-inputin" style="display: none;">
+                            Choose an Image
+                        </label>
+                        <div  class="scan">
+                            {% if disease %}
+                            <img src="{{ uploaded_image }}" alt="Uploaded Image" id="uploaded-image">
+                            {% else %}
+                            <img src="{{ url_for('static', filename='images/scan.png') }}" alt="" style="height: 200px; width: 200px;" id="output">
+                            {% endif %}
+                        </div>
+                        <br>
+                        <input type="submit" value="Detect Diseases   &#128070;" class="main-button-slider my-custom-input"/>
+                    </form>
+                    <br>   
+                    <div id="prediction">
+                        {% if disease %}
+                        <div class="prediction-result" style="color:white">
+                            <p>Prediction:
+                            <br>
+                            Predicted Disease: {{disease}}
+                            <br>
+                            Predicted Grade: {{grade}}</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                          
+        
+                </div>
+
+                <div class="right-text offset-lg-1 col-lg-6 col-md-12 col-sm-12 mobile-bottom-fix">
+                    <ul>
+                        <li data-scroll-reveal="enter right move 30px over 0.6s after 0.4s">
+                            <img src="{{ url_for('static', filename='images/about-icon-01.png') }}" alt="">
+                            <div class="text">
+                                <h4>Ripeness detection:</h4>
+                                <p>Utilizing machine learning to identify optimal fruit ripeness for efficient harvesting and quality control in agriculture.</p>
+                            </div>
+                        </li>
+                        <li data-scroll-reveal="enter right move 30px over 0.6s after 0.5s">
+                            <img src="{{ url_for('static', filename='images/about-icon-01.png') }}" alt="">
+                            <div class="text">
+                                <h4>Disease detection:</h4>
+                                <p>Applying ML models to identify and classify diseases in pomegranates for timely intervention and crop protection.</p>
+                            </div>
+                        </li>
+                        <li data-scroll-reveal="enter right move 30px over 0.6s after 0.6s">
+                            <img src="{{ url_for('static', filename='images/about-icon-01.png') }}" alt="">
+                            <div class="text">
+                                <h4>Deployment</h4>
+                                <p>Our project aims to develop a versatile solution compatible with both Android and web platforms for accessible and user-friendly deployment.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="right-image-decor"></div>
+
+
+
+
+
+
+
+    
+
+
+
+    
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+    
+
+    
+
+    <!-- jQuery -->
+    <script src="{{ url_for('static', filename='js/jquery-2.1.0.min.js') }}"></script>
+
+    <!-- Bootstrap -->
+    <script src="{{ url_for('static', filename='js/popper.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
+    <!-- Plugins -->
+    <script src="{{ url_for('static', filename='js/owl-carousel.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/scrollreveal.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/waypoints.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.counterup.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/imgfix.min.js') }}"></script>
+
+    <!-- Global Init -->
+    <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
+    <script>
+        function loadFile(event) {
+            var image = document.getElementById('output');
+            image.src = URL.createObjectURL(event.target.files[0]);
+        };
+    </script>
+    
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+from flask import Flask, render_template, request, url_for, Response
+import cv2
+from ultralytics import YOLO
+import cvzone
+import tensorflow as tf
+import numpy as np
+from PIL import Image
+import math
+
+app = Flask(__name__)
+
+# Set the prediction pipeline to use cpu only
+tf.config.set_visible_devices([], 'GPU')
+
+# Function to load the pre-trained TensorFlow model
+def load_model(model_path):
+    """
+    Load a pre-trained TensorFlow model.
+
+    Args:
+    - model_path: Path to the saved model directory.
+
+    Returns:
+    - model: Loaded TensorFlow model.
+    """
+    model = tf.keras.models.load_model(model_path, compile=False)
+    return model
+
+# Function to preprocess input image
+def preprocess_image(image_path, target_size):
+    """
+    Preprocess an input image for prediction.
+
+    Args:
+    - image_path: Path to the input image file.
+    - target_size: Tuple specifying the target size for resizing the image.
+
+    Returns:
+    - preprocessed_image: Preprocessed image as a numpy array.
+    """
+    # Load the image
+    image = Image.open(image_path)
+    # Resize the image
+    image = image.resize(target_size)
+    # Convert the image to a numpy array
+    preprocessed_image = np.array(image)
+    # Normalize pixel values (assuming input range [0, 255])
+    return preprocessed_image
+
+# Function to make predictions using the loaded model
+
+
+def predict_grade(model, input_image):
+    """
+    Make predictions using the loaded model.
+
+    Args:
+    - model: Loaded TensorFlow model.
+    - input_image: Preprocessed input image for prediction.
+    - class_labels: List of class labels corresponding to model output classes.
+
+    Returns:
+    - predicted_class: Predicted class label for the input image.
+    """
+    class_labels = ['grade 1 quality 1', 'grade 1 quality 2', 'grade 1 quality 3', 'grade 1 quality 4',
+                   'grade 2 quality 1', 'grade 2 quality 2', 'grade 2 quality 3', 'grade 2 quality 4',
+                   'grade 3 quality 1', 'grade 3 quality 2', 'grade 3 quality 3', 'grade 3 quality 4']
+
+    # Reshape input image to match model input shape
+    input_image = np.expand_dims(input_image, axis=0)
+    # Make predictions
+    predictions = model.predict(input_image)
+    # Find the index of the highest probability
+    predicted_class_index = np.argmax(predictions, axis=1)[0]
+    # print(predictions, predicted_class_index)
+    # Get the predicted class label
+    predicted_class = class_labels[predicted_class_index]
+    return predicted_class
+
+def predict_disease(model, input_image):
+    """
+    Make predictions using the loaded model.
+
+    Args:
+    - model: Loaded TensorFlow model.
+    - input_image: Preprocessed input image for prediction.
+    - class_labels: List of class labels corresponding to model output classes.
+
+    Returns:
+    - predicted_class: Predicted class label for the input image.
+    """
+    class_labels = ['Alternaria', 'Anthracnose', 'Bacterial_Blight', 'Cercospora', 'Healthy']
+
+    # Reshape input image to match model input shape
+    input_image = np.expand_dims(input_image, axis=0)
+    # Make predictions
+    predictions = model.predict(input_image)
+    # Find the index of the highest probability
+    predicted_class_index = np.argmax(predictions, axis=1)[0]
+    # print(predictions, predicted_class_index)
+    # Get the predicted class label
+    predicted_class = class_labels[predicted_class_index]
+    return predicted_class
+
+
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/predict')
+def detect():
+    return render_template('detect.html')
+
+@app.route('/predict_datapoint', methods=['GET', 'POST'])
+def predict_datapoint():
+    uploaded_file = request.files['image']
+    
+    
+    # Read the image file
+    image = Image.open(uploaded_file)
+    image.resize((200, 200)).save("static/uploads/custom_image.jpg")
+    disease_model_path = 'models/inception_fine_tune.h5'
+    disease_model = load_model(disease_model_path)
+    grade_model_path = ('models/pomogranate_grading.h5')
+    grade_model = load_model(grade_model_path)
+    # Load and preprocess the input image
+    # Example target size (adjust according to your model's input size)
+    target_size = (256, 256)
+    input_image = preprocess_image(uploaded_file, target_size)
+
+    # Make predictions using the loaded model
+    predicted_disease = predict_disease(disease_model, input_image)
+    predicted_grade = predict_grade(grade_model, input_image)
+    uploaded_image = url_for('static', filename='uploads/' + "custom_image.jpg")
+    return render_template('detect.html', disease=predicted_disease, grade=predicted_grade, uploaded_image=uploaded_image)
+
+
+
+# Initialize YOLO model
+model = YOLO("./models/nano_best_10.pt")
+
+# Class names for pomegranates
+class_names = ["bud", "flower", "early-fruit", "mid-growth", "ripe"]
+
+# Function to detect and display pomegranates
+def detect_and_display(img):
+    results = model(img, stream=True)
+    for r in results:
+        boxes = r.boxes
+        for box in boxes:
+            # Using opencv
+            # for bounding box
+            x1, y1, x2, y2 = box.xyxy[0]
+            x1, y1, x2, y2 = int(x1), int(y1), int(x2), int(y2)
+            # cv2.rectangle(img, (x1, y1), (x2, y2), (255, 0, 255), 2)
+            conf = math.ceil(box.conf[0] * 100) / 100
+            print(conf)
+            if conf > 0.7:    # Using cvzone
+                w, h = x2 - x1, y2 - y1
+                cvzone.cornerRect(img, (x1, y1, w, h))
+                # for class name
+                cls = int(box.cls[0])
+                cvzone.putTextRect(img, f"{class_names[cls]} {conf} ", (max(0, x1), max(35, y1)),
+                                scale=1, thickness=1)
+    return img
+
+# Route for object detection from webcam
+@app.route('/ripeness')
+def detect_objects_webcam():
+    return render_template('ripeness.html')
+
+# Route for video feed from webcam
+@app.route('/video_feed')
+def video_feed():
+    return Response(gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
+
+def gen_frames():
+    camera = cv2.VideoCapture(0)
+    while True:
+        success, frame = camera.read()  # read the camera frame
+        if not success:
+            break
+        else:
+            frame = detect_and_display(frame)
+            ret, buffer = cv2.imencode('.jpg', frame)
+            frame = buffer.tobytes()
+            yield (b'--frame\r\n'
+                   b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')  # concat frame one by one and show result
+@app.route('/stop_webcam')
+def stop_webcam():
+    # Redirect to a page displaying a message that the webcam feed has stopped
+    return render_template('webcam_stopped.html')
+
+
+if __name__ == '__main__':
+    app.run(host='127.0.0.1', port=8000, debug=True)
+ 
+
+
+
+
+

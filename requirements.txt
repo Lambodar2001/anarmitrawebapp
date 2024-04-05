@@ -1,0 +1,6 @@
+tensorflow
+flask
+ultralytics
+numpy 
+opencv-python
+cvzone
