@@ -676,11 +676,6 @@ welcome
 
 }
 
-@media (max-width: 768px) {
-  .welcome-area {
-    background-image: none; /* Hide the background image on mobile devices */
-  }
-}
 
 
 
@@ -719,115 +714,7 @@ welcome
   position: relative;
 }
 
-@media (max-width: 1420px) {
-  .welcome-area .header-text {
-    width: 70%;
-    margin-left: 5%;
-  }
 
- 
-}
-
-@media (max-width: 1320px) {
-  .welcome-area .header-text .left-text {
-    margin-top: 50%;
-  }
-  .welcome-area .header-text {
-    width: 50%;
-    margin-left: 5%;
-  }
-}
-
-@media (max-width: 1140px) {
-  .welcome-area {
-    height: auto;
-  }
-  .welcome-area .header-text {       
-    width: 92%;
-    padding-top: 793px;
-  }
-  .welcome-area .header-text .left-text {
-    margin-top: 5%;
-    transform: none !important;
-
-
-  }
-
-
-  .welcome-area .header-text h1 {
-    font-weight: 900;
-    font-size: 40px;
-    line-height: 1.2; 
-    letter-spacing: 1px;
-    margin-top: -70%;
-    margin-bottom: 0%;
-    color: #191a20;
-  }
-  
- 
-
-
-}
-
-@media (max-width: 810px) {
-  .welcome-area {
-    background-size: contain;
-    background-color:rgba(176, 196, 222, 0.381);
-  }
-
-
-  .welcome-area .header-text {
-    padding-top: 50%;
-    margin-left: 0;
-    font-size: 20px;
-  }
-    
-  .container-fluid .col-md-12 {
-    margin-right: 0px;
-    padding-right: 0px;
-  }
-
-  
-
-  
-.welcome-area .header-text h1 {
-  font-weight: 900;
-  font-size: 20px;
-  line-height: 1.2; 
-  letter-spacing: 1px;
-  margin-top: 40%;
-
-  margin-bottom: 20%;
-  color: #191a20;
-}
-
-
-
-
-
-
-}
-
-
-
-/*
----------------------------------------------
-about
----------------------------------------------
-*/
-
-#about {
-  padding: 100px 0px;
-  position: relative;
-  z-index: 9;
-}
-
-@media (max-width: 992px) {
-  .features-item {
-    margin-bottom: 45px;
-
-  }
-}
 
 
 

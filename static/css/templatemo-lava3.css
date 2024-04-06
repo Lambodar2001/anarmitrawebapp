@@ -1,0 +1,42 @@
+/* For screens smaller than 576px (e.g., phones) */
+@media (max-width: 575.98px) {
+  .left-texta {
+      margin-left: 10%; /* Adjust as needed */
+      margin-top: 10%; /* Adjust as needed */
+  }
+}
+
+/* For screens between 576px and 767.98px (e.g., tablets) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .left-texta {
+      margin-left: 20%; /* Adjust as needed */
+      margin-top: 20%; /* Adjust as needed */
+  }
+}
+
+/* For screens between 768px and 991.98px (e.g., small laptops) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .left-texta {
+      margin-left: 20%; /* Adjust as needed */
+      margin-top: 40px; /* Adjust as needed */
+  }
+}
+
+/* For screens larger than 992px (e.g., medium laptops, large laptops, and desktops) */
+/* For screens smaller than 992px */
+@media (max-width: 991.98px) {
+  .left-image {
+    margin: 0 auto; /* Center the image block horizontally */
+    text-align: center; /* Center the content inside the image block */
+  }
+
+  .right-text {
+    margin-left: 30%; 
+    margin-top: 20px; /* Adjust as needed to create space between the image and the prediction block */
+  }
+}
+
+
+.cure{
+  background-color: #e6eefb;
+}
