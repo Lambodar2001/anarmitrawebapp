@@ -3,4 +3,4 @@ flask
 ultralytics
 numpy 
 opencv-python
-cvzonea
+cvzone
