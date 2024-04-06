@@ -117,7 +117,7 @@ body {
   }
 }
 
-a.main-button-slider {
+input[type=submit] {
   font-size: 14px;
   border-radius: 25px;
   padding: 15px 25px;
@@ -130,38 +130,22 @@ a.main-button-slider {
   -moz-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
-  display: inline-block;
 }
 
-
-
-/* Add margin between buttons */
-.main-button-slider + .main-button-slider {
-  margin-left: 10px;
+.main-button-slider {
+  font-size: 14px;
+  border-radius: 25px;
+  padding: 15px 25px;
+  background-color: #fba70b;
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 1px;
+  -webkit-transition: all 0.3s ease 0s;
+  -moz-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
 }
-
-/* Media query for small screens */
-@media screen and (max-width: 576px) {
-  .main-button-slider {
-    display: block;
-    margin-bottom: 10px; /* Add some space between buttons for small screens */
-  }
-}
-
-/* Media query for medium screens */
-@media screen and (min-width: 577px) and (max-width: 768px) {
-  .main-button-slider {
-    font-size: 14px; /* Decrease font size for medium screens */
-  }
-}
-
-/* Media query for large screens */
-@media screen and (min-width: 769px) {
-  .main-button-slider {
-    font-size: 16px; /* Increase font size for large screens */
-  }
-}
-
 
 a.main-button-slider:hover {
   background-color: #f1556a;
@@ -652,11 +636,6 @@ header
 }
 
 
-/* ////////// */
-
-
-
-
 /* 
 ---------------------------------------------
 welcome
@@ -682,13 +661,10 @@ welcome
   }
 }
 
-
-
-
 .welcome-area .header-text .left-text {
   position: relative;
   align-self: center;
-  margin-top: 35%;
+  margin-top: 25%;
   margin-left: 50px;
   transform: perspective(1px) translateY(-30%) !important;
 }
@@ -697,8 +673,8 @@ welcome
 
 .welcome-area .header-text h1 {
   font-weight: 900;
-  font-size: 40px;
-  line-height: 1.2; 
+  font-size: 52px;
+  line-height: 80px;
   letter-spacing: 1px;
   margin-bottom: 30px;
   color: #191a20;
@@ -724,8 +700,6 @@ welcome
     width: 70%;
     margin-left: 5%;
   }
-
- 
 }
 
 @media (max-width: 1320px) {
@@ -749,66 +723,23 @@ welcome
   .welcome-area .header-text .left-text {
     margin-top: 5%;
     transform: none !important;
-
-
   }
-
-
-  .welcome-area .header-text h1 {
-    font-weight: 900;
-    font-size: 40px;
-    line-height: 1.2; 
-    letter-spacing: 1px;
-    margin-top: -70%;
-    margin-bottom: 0%;
-    color: #191a20;
-  }
-  
- 
-
-
 }
-
 @media (max-width: 810px) {
   .welcome-area {
     background-size: contain;
-    background-color:rgba(176, 196, 222, 0.381);
   }
 
-
   .welcome-area .header-text {
-    padding-top: 50%;
+    padding-top: 100%;
     margin-left: 0;
-    font-size: 20px;
   }
     
   .container-fluid .col-md-12 {
     margin-right: 0px;
     padding-right: 0px;
   }
-
-  
-
-  
-.welcome-area .header-text h1 {
-  font-weight: 900;
-  font-size: 20px;
-  line-height: 1.2; 
-  letter-spacing: 1px;
-  margin-top: 40%;
-
-  margin-bottom: 20%;
-  color: #191a20;
 }
-
-
-
-
-
-
-}
-
-
 
 /*
 ---------------------------------------------
@@ -825,11 +756,8 @@ about
 @media (max-width: 992px) {
   .features-item {
     margin-bottom: 45px;
-
   }
 }
-
-
 
 .features-item {
   border-radius: 5px;
@@ -1111,7 +1039,6 @@ footer .right-content {
 
 .contact-form {
   text-align: center;
-  visibility: hidden;
 }
 
 .contact-form ::-webkit-input-placeholder { /* Edge */
@@ -1316,19 +1243,3 @@ preloader
     opacity: 0;
   }
 }
-
-.logo {
-  position: absolute; /* Position the logo absolutely within the navigation bar */
-  top: 50%; /* Adjust this value to vertically center the logo */
-  transform: translateY(-50%); /* Vertically center the logo */
-  left: 10px; /* Adjust this value to position the logo horizontally */
-}
-
-.logo img {
-  max-width: 100%;
-  max-height: 50px;
-  /* Add white drop shadow */
-  filter: drop-shadow(5px 5px 6px  rgb(244, 244, 244));
-}
-
-

@@ -11,17 +11,9 @@
 
     <title>Zeal</title>
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barriecito&family=La+Belle+Aurore&family=Loved+by+the+King&family=Protest+Revolution&family=Zeyada&display=swap" rel="stylesheet">
-
-
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barriecito&family=La+Belle+Aurore&family=Loved+by+the+King&family=Protest+Revolution&family=Zeyada&display=swap" rel="stylesheet">
 <!--
 
 
@@ -31,13 +23,22 @@
     <!-- Additional CSS Files -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/font-awesome.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/templatemo-lava2.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/templatemo-lava3.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/detectcss.css') }}">
-
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/templatemo-lava.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/owl-carousel.css') }}">
 
-   
+    <style>
+
+        .left-texta {
+            position: relative;
+            align-self: center;
+            margin-top: 35%;
+            margin-left: 40%;
+            margin-left: 50px;
+            transform: perspective(1px) translateY(-30%) !important;
+          }
+          
+
+    </style>
 
 </head>
 
@@ -61,24 +62,33 @@
                 <div class="col-12">
                     <nav class="main-nav"> 
                         <!-- ***** Logo Start ***** -->
-                        <a href="{{ url_for('index') }}" class="logo">
-                            <img src="{{ url_for('static', filename='images/pimg.png') }}" alt="Logo">
+
+
+                        <a href="{{ url_for('index') }}" class="logo" style="font-family: 'Protest Revolution', sans-serif; text-shadow: 2px 2px 4px rgba(249, 24, 0, 1);                         ">
+                            <span style="color:rgb(255, 255, 255)">Anar</span> <span style="color: rgb(255, 255, 255);">Mitra</span>
                         </a>
-                        <!-- ***** Logo End ***** -->
+
+                   
                         
+                        <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="{{ url_for('index') }}" class="menu-item">Home</a></li>
-                            <li class="scroll-to-section"><a href="#about" class="menu-item">About</a></li>
-                            <li class="scroll-to-section"><a href="#testimonials" class="menu-item">Group</a></li>
-                            <li class="scroll-to-section"><a href="#contact-us" class="menu-item">Project Report</a></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li class="scroll-to-section"><a href="{{ url_for('index') }}">Home Page</a></li>
+
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+
                         </ul>
-                        
-                        <!-- ***** Menu End ***** -->
-                        
-                        <a class="menu-trigger">
+                        <a class='menu-trigger'>
                             <span>Menu</span>
                         </a>
+                        <!-- ***** Menu End ***** -->
                     </nav>
                 </div>
             </div>
@@ -88,145 +98,72 @@
 
 
 
-
-
-
-    <div class="left-image-decor"></div>
-
     
-    <!-- ***** Features Big Item End ***** -->
-    <section class="section" id="promotion" style="margin-top:7%">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12 mobile-bottom-fix-big">
-                    <div class="left-image" data-scroll-reveal="enter left move 30px over 0.6s after 0.4s"  style="margin-left:25%">
-                        <form action="/predict_datapoint" method="post" enctype="multipart/form-data"
-                            class="rounded img-fluid d-block mx-auto">
-                          
-                            <div class="scan">
-                                {% if disease %}
-                                <img src="{{ uploaded_image }}" alt="Uploaded Image" id="uploaded-image" class="image-with-shadow">
-                                
-                                {% else %}
-                                <img src="{{ url_for('static', filename='images/scan.jpeg') }}" alt=""
-                                class="image-with-shadow" id="output" >
-                                
-                                {% endif %}
-                            </div>
-                            <br>
-                            <div class="button-container">
-                            
-                                <label for="image" class="main-button-slider my-custom-inputA">
-                                    <span class="material-symbols-outlined">
-                                        upload
-                                    </span>
+        
 
 
-                                    <input type="file" name="image" id="image" accept="image/*" onchange="loadFile(event)"
-                                           class="main-button-slider my-custom-input" style="display: none;">
-                                    upload
-                                </label>
 
-                                
+    <!-- ***** Welcome Area Start ***** -->
+    <div class="welcome-area" id="welcome">
 
-                                <input type="submit" value="Detect Diseases   &#128070;" class="main-button-slider my-custom-inputA" />
+        <!-- ***** Header Text Start ***** -->
+        
 
-                            </div>
-                            
-                                
-                        </form>
+        
+
+
+        
+        <div class="header-text">
+            <div class="container">
+                <div class="row">
+                    <div class="left-text col-lg-6 col-md-12 col-sm-12 col-xs-12"
+                        data-scroll-reveal="enter left move 30px over 0.6s after 0.4s" style="margin-left: 40%;">
                         <br>
-                    </div>
-                </div>
-            
+                        <br>
 
-                <div class="col-lg-6 col-md-6 col-sm-12 mobile-bottom-fix">
-                    <div class="right-text">
-                        <div class="prediction-result" style="color:white" data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
-                            <p class="bungee-spice-regular"  id="corona-symbol3">Prediction:</p>
-                            <br>
+                        <form action=/predict_datapoint method="post" enctype="multipart/form-data">
 
-                            <p>
-                                <span class="material-symbols-outlined "  id="corona-symbol" style="color: green;vertical-align: middle" >coronavirus</span>
-                                 <span class="patua-one-regular"> Predicted Disease: </span>  
-                                {% if disease %}
-                                <span class="patua-one-regularf">{{ disease }}</span>
-                                {% endif %}
+                            <form action="/predict" method="post" enctype="multipart/form-data">
+
+                                <br><br>
+                                <input type="file" name="image" accept="image/*" onchange=loadFile(event) class="main-button-slider" >
+
                                 
-                            </p>
+
+                                <br><br>    
+                                <div  class="scan">
+
+                                    {% if disease: %}
+                                    <img src="{{ uploaded_image }}" alt="Uploaded Image" id="uploaded-image">
+                                    {% else %}
+                                    <img src="{{ url_for('static', filename='images/scan.png') }}" alt="" style="height: 200px; width: 200px;" id="output">
+                                    {% endif %}
+                                    
+                                </div>
+                                <br>
+                                <input type="submit" value="Detect Diseases   &#128070;" class="main-button-slider"/>
+                            </form>
                             
-                            <br>
-                            <p><span class="material-symbols-outlined" style="color: green;vertical-align: middle;"  id="corona-symbol2">energy_savings_leaf</span> <span class="patua-one-regular"> Predicted Grade:</span> 
-                                {% if grade %}
-                                <span class="patua-one-regularf">{{grade}}</span>
-                                {% endif %}
-                            </p>
-                            <br>
-                        </div>
-                        
-                        <div class="disease-info cure" data-scroll-reveal="enter left move 30px over 0.6s after 0.4s" >
-                            <h3 class="patua-one-regular">Recommendation</h3>
-                            <p>{{ disease_additional_info }}</p>
+                        </form>
+                        <br>   
+                        <div id="prediction">
+                            {% if disease %}
+                            <div class="prediction-result" style="color:white">
+                                <p>Prediction:
+                                <br>
+                                Predicted Disease: {{disease}}
+                                <br>
+                                Predicted Grade: {{grade}}</p>
+                            </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
-                
-                
             </div>
         </div>
-    </section>
-    
-
-    <div class="right-image-decor"></div>
-
-
-
-    
-
-
-
-
-
-
-
-
-    
-
-
-
-    
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
+        <!-- ***** Header Text End ***** -->
+    </div>
+    <!-- ***** Welcome Area End ***** -->
 
     
 
@@ -250,50 +187,10 @@
     <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
     <script>
         function loadFile(event) {
-            var image = document.getElementById('uploaded-image');
+            var image = document.getElementById('output');
             image.src = URL.createObjectURL(event.target.files[0]);
         };
     </script>
-    
-
-
-
-    <!-- Add this script inside the <head> tag -->
-<script>
-    window.addEventListener('resize', function() {
-        adjustLayout();
-    });
-
-  
-    function adjustLayout() {
-        var screenWidth = window.innerWidth;
-
-        if (screenWidth < 767) {
-            // For screens smaller than 767px
-            document.querySelector('.left-image').style.margin = '0 auto';
-            document.querySelector('.left-image').style.textAlign = 'center';
-
-            var buttons = document.querySelectorAll('.my-custom-inputA');
-            buttons.forEach(function(button) {
-                button.style.display = 'block';
-                button.style.margin = '0 auto';
-            });
-        } else {
-            // For screens larger than 767px
-            document.querySelector('.left-image').style.marginLeft = '10%';
-
-            var buttons = document.querySelectorAll('.my-custom-inputA');
-            buttons.forEach(function(button) {
-                button.style.display = 'inline-block';
-                button.style.margin = '0';
-            });
-        }
-    }
-</script>
-
-
-
-    
     
 
 </body>
