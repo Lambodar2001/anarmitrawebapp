@@ -110,7 +110,7 @@ def predict_datapoint():
 
     # Read the image file
     image = Image.open(uploaded_file)
-    image.resize((200, 200)).save("static/uploads/custom_image.jpg")
+    image.resize((200, 200)).convert('RGB').save("static/uploads/custom_image.jpg")
     disease_model_path = 'models/inception_fine_tune.h5'
     disease_model = load_model(disease_model_path)
     grade_model_path = ('models/pomogranate_grading.h5')
@@ -208,4 +208,4 @@ def stop_webcam():
     return render_template('webcam_stopped.html')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+    app.run()
