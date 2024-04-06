@@ -134,7 +134,7 @@ def predict_datapoint():
         
         "Cercospora" : "Always consider an integrated approach with preventive measures together with biological treatments if available. If the economic threshold is reached, control measures have to be introduced. Two to three sprayings at 15 days interval of a fungicide after fruit formation gives good control of the disease. Active ingredients are mancozeb, conazole, or kitazin. Only spray fungicides with an actual registration for pomegranate. It is important to follow the specified concentrations and to use fungicides with different mode of actions to prevent resistances. To respect the waiting period is also very important.",
         
-        "Healthy":"Helthy Pomegrante !!! To keep pomegranate plants healthy and disease-free, implement regular inspections, proper sanitation, and optimal growing conditions. Consider cultural practices like crop rotation, balanced fertilization, and biological treatments. If needed, use chemical control measures judiciously and rotate fungicides to prevent resistance. Monitor plants closely for any signs of disease and adjust management practices accordingly."
+        "Healthy":"Healthy Pomegrante !!! To keep pomegranate plants healthy and disease-free, implement regular inspections, proper sanitation, and optimal growing conditions. Consider cultural practices like crop rotation, balanced fertilization, and biological treatments. If needed, use chemical control measures judiciously and rotate fungicides to prevent resistance. Monitor plants closely for any signs of disease and adjust management practices accordingly."
 
         
         
@@ -208,4 +208,4 @@ def stop_webcam():
     return render_template('webcam_stopped.html')
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=8000, debug=True)
+    app.run(host='0.0.0.0')
