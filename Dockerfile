@@ -1,8 +1,7 @@
-FROM python:3.10-slim-buster
+FROM python:3.10
+COPY . /app
 WORKDIR /app
-COPY ./requirements.txt /app
-RUN pip install -r requirements.txt
-COPY . .
+RUN pip install -r requirements.txt 
 EXPOSE 5000
-ENV FLASK_APP=my_flask.py
-CMD ["flask", "run", "--host", "0.0.0.0"]
+ENTRYPOINT [ "python" ] 
+CMD [ "app.py" ] 

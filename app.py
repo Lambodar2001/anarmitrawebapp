@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, url_for, Response
 import cv2
 from ultralytics import YOLO
 import cvzone
+from download import download_files
 import tensorflow as tf
 import numpy as np
 from PIL import Image
@@ -23,7 +24,7 @@ def load_model(model_path):
     Returns:
     - model: Loaded TensorFlow model.
     """
-    model = tf.keras.models.load_model(model_path, compile=False)
+    model = tf.keras.models.load_model(model_path, compile=True)
     return model
 
 # Function to preprocess input image
@@ -41,7 +42,7 @@ def preprocess_image(image_path, target_size):
     # Load the image
     image = Image.open(image_path)
     # Resize the image
-    image = image.resize(target_size)
+    image = image.resize(target_size).convert('RGB')
     # Convert the image to a numpy array
     preprocessed_image = np.array(image)
     # Normalize pixel values (assuming input range [0, 255])
@@ -90,7 +91,8 @@ def predict_disease(model, input_image):
     input_image = np.expand_dims(input_image, axis=0)
     # Make predictions
     predictions = model.predict(input_image)
-    # Find the index of the highest probability
+    # Find the index of the high
+    # est probability
     predicted_class_index = np.argmax(predictions, axis=1)[0]
     # Get the predicted class label
     predicted_class = class_labels[predicted_class_index]
@@ -98,6 +100,7 @@ def predict_disease(model, input_image):
 
 @app.route('/')
 def index():
+    download_files()
     return render_template('index.html')
 
 @app.route('/predict')
@@ -179,6 +182,7 @@ def detect_and_display(img):
                                 scale=1, thickness=1)
     return img
 
+
 # Route for object detection from webcam
 @app.route('/ripeness')
 def detect_objects_webcam():
@@ -208,4 +212,4 @@ def stop_webcam():
     return render_template('webcam_stopped.html')
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host="0.0.0.0")
