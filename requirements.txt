@@ -175,3 +175,4 @@ widgetsnbextension==4.0.10
 wrapt==1.16.0
 gunicorn
 cvzone
+gdown
