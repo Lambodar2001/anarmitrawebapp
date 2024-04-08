@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, url_for, Response
 import cv2
 from ultralytics import YOLO
 import cvzone
-from download import download_files
 import tensorflow as tf
 import numpy as np
 from PIL import Image
@@ -24,7 +23,7 @@ def load_model(model_path):
     Returns:
     - model: Loaded TensorFlow model.
     """
-    model = tf.keras.models.load_model(model_path, compile=True)
+    model = tf.keras.models.load_model(model_path, compile=False)
     return model
 
 # Function to preprocess input image
@@ -42,7 +41,7 @@ def preprocess_image(image_path, target_size):
     # Load the image
     image = Image.open(image_path)
     # Resize the image
-    image = image.resize(target_size).convert('RGB')
+    image = image.resize(target_size)
     # Convert the image to a numpy array
     preprocessed_image = np.array(image)
     # Normalize pixel values (assuming input range [0, 255])
@@ -91,8 +90,7 @@ def predict_disease(model, input_image):
     input_image = np.expand_dims(input_image, axis=0)
     # Make predictions
     predictions = model.predict(input_image)
-    # Find the index of the high
-    # est probability
+    # Find the index of the highest probability
     predicted_class_index = np.argmax(predictions, axis=1)[0]
     # Get the predicted class label
     predicted_class = class_labels[predicted_class_index]
@@ -100,7 +98,6 @@ def predict_disease(model, input_image):
 
 @app.route('/')
 def index():
-    download_files()
     return render_template('index.html')
 
 @app.route('/predict')
@@ -193,8 +190,9 @@ def detect_objects_webcam():
 def video_feed():
     return Response(gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
+camera = cv2.VideoCapture("rtsp://admin:admin@192.168.1.10:1935")
+
 def gen_frames():
-    camera = cv2.VideoCapture(0)
     while True:
         success, frame = camera.read()  # read the camera frame
         if not success:
@@ -208,6 +206,7 @@ def gen_frames():
 
 @app.route('/stop_webcam')
 def stop_webcam():
+    camera.close()
     # Redirect to a page displaying a message that the webcam feed has stopped
     return render_template('webcam_stopped.html')
 
