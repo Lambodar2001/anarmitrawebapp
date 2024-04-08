@@ -190,7 +190,7 @@ def detect_objects_webcam():
 def video_feed():
     return Response(gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
-camera = cv2.VideoCapture("rtsp://admin:admin@192.168.1.10:1935")
+camera = cv2.VideoCapture(0)
 
 def gen_frames():
     while True:
