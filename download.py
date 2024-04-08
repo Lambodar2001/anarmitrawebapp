@@ -1,9 +1,9 @@
 import gdown
 import os
 def download_files():
-    url1 = f"https://drive.google.com/uc?id=16i396nXTpPNilnGELcekzh2SxH63Dpum"
+    url1 = f"https://drive.google.com/uc?id=1upti26NnVpRMtq5x57Dql9Yjmj9kHE1j"
     output1 = "models/pomogranate_grading.h5"
-    url2 = f"https://drive.google.com/uc?id=1ZjCXb7YiUswFC6KQYyNr8_DI8pZupVL-"
+    url2 = f"https://drive.google.com/uc?id=1uv1hTzmkaWnCa34duTURJtDFMKRP_u1d"
     output2 = "models/inception_fine_tune.h5"
     if not os.path.exists(output1):    
         print("downloading files")
