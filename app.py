@@ -3,98 +3,13 @@ import cv2
 from ultralytics import YOLO
 import cvzone
 import tensorflow as tf
-import numpy as np
 from PIL import Image
 import math
-
+from utils import predict_disease, predict_grade, preprocess_image, load_model
 app = Flask(__name__)
 
 # Set the prediction pipeline to use cpu only
 tf.config.set_visible_devices([], 'GPU')
-
-# Function to load the pre-trained TensorFlow model
-def load_model(model_path):
-    """
-    Load a pre-trained TensorFlow model.
-
-    Args:
-    - model_path: Path to the saved model directory.
-
-    Returns:
-    - model: Loaded TensorFlow model.
-    """
-    model = tf.keras.models.load_model(model_path, compile=False)
-    return model
-
-# Function to preprocess input image
-def preprocess_image(image_path, target_size):
-    """
-    Preprocess an input image for prediction.
-
-    Args:
-    - image_path: Path to the input image file.
-    - target_size: Tuple specifying the target size for resizing the image.
-
-    Returns:
-    - preprocessed_image: Preprocessed image as a numpy array.
-    """
-    # Load the image
-    image = Image.open(image_path)
-    # Resize the image
-    image = image.resize(target_size)
-    # Convert the image to a numpy array
-    preprocessed_image = np.array(image)
-    # Normalize pixel values (assuming input range [0, 255])
-    return preprocessed_image
-
-# Function to make predictions using the loaded model
-def predict_grade(model, input_image):
-    """
-    Make predictions using the loaded model.
-
-    Args:
-    - model: Loaded TensorFlow model.
-    - input_image: Preprocessed input image for prediction.
-
-    Returns:
-    - predicted_class: Predicted class label for the input image.
-    """
-    class_labels = ['grade 1 quality 1', 'grade 1 quality 2', 'grade 1 quality 3', 'grade 1 quality 4',
-                   'grade 2 quality 1', 'grade 2 quality 2', 'grade 2 quality 3', 'grade 2 quality 4',
-                   'grade 3 quality 1', 'grade 3 quality 2', 'grade 3 quality 3', 'grade 3 quality 4']
-
-    # Reshape input image to match model input shape
-    input_image = np.expand_dims(input_image, axis=0)
-    # Make predictions
-    predictions = model.predict(input_image)
-    # Find the index of the highest probability
-    predicted_class_index = np.argmax(predictions, axis=1)[0]
-    # Get the predicted class label
-    predicted_class = class_labels[predicted_class_index]
-    return predicted_class
-
-def predict_disease(model, input_image):
-    """
-    Make predictions using the loaded model.
-
-    Args:
-    - model: Loaded TensorFlow model.
-    - input_image: Preprocessed input image for prediction.
-
-    Returns:
-    - predicted_class: Predicted class label for the input image.
-    """
-    class_labels = ['Alternaria', 'Anthracnose', 'Bacterial_Blight', 'Cercospora', 'Healthy']
-
-    # Reshape input image to match model input shape
-    input_image = np.expand_dims(input_image, axis=0)
-    # Make predictions
-    predictions = model.predict(input_image)
-    # Find the index of the highest probability
-    predicted_class_index = np.argmax(predictions, axis=1)[0]
-    # Get the predicted class label
-    predicted_class = class_labels[predicted_class_index]
-    return predicted_class
 
 @app.route('/')
 def index():
@@ -111,10 +26,15 @@ def predict_datapoint():
     # Read the image file
     image = Image.open(uploaded_file)
     image.resize((200, 200)).convert('RGB').save("static/uploads/custom_image.jpg")
-    disease_model_path = 'models/inception_fine_tune.h5'
-    disease_model = load_model(disease_model_path)
-    grade_model_path = ('models/pomogranate_grading.h5')
-    grade_model = load_model(grade_model_path)
+    disease_model = load_model("models/inception_fine_tune.tflite")
+    grade_model = load_model("models/pomogranate_grading.tflite")
+    img = preprocess_image("imgs/pomogranate.jpeg")
+    
+    disease = predict_disease(disease_model, img)
+    grade = predict_grade(grade_model, img)
+    
+    print("Predicted Disease:", disease)
+    print("Predicted Grade:", grade)
     # Load and preprocess the input image
     # Example target size (adjust according to your model's input size)
     target_size = (256, 256)
