@@ -32,7 +32,7 @@ def preprocess_image(image_path, target_size=(256, 256)):
     - preprocessed_image: Preprocessed image as a numpy array.
     """
     # Load the image
-    image = Image.open(image_path)
+    image = Image.open(image_path).convert('RGB')
     # Resize the image
     image = image.resize(target_size)
     # Convert the image to a numpy array
@@ -104,11 +104,11 @@ def predict_disease(model, input_image):
 
 if __name__ == "__main__":
     disease_model = load_model("models/inception_fine_tune.tflite")
-    grade_model = load_model("models/pomogranate_grading.tflite")
+    # grade_model = load_model("models/pomogranate_grading.tflite")
     img = preprocess_image("imgs/pomogranate.jpeg")
     
     disease = predict_disease(disease_model, img)
-    grade = predict_grade(grade_model, img)
+    # grade = predict_grade(grade_model, img)
     
     print("Predicted Disease:", disease)
-    print("Predicted Grade:", grade)
+    # print("Predicted Grade:", grade)
