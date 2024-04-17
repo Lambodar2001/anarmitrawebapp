@@ -5,7 +5,7 @@ import cvzone
 import tensorflow as tf
 from PIL import Image
 import math
-from utils import predict_disease, preprocess_image, load_model
+from utils import predict_disease, preprocess_image, load_model, predict_grade
 app = Flask(__name__)
 
 # Set the prediction pipeline to use cpu only
@@ -26,23 +26,23 @@ def predict_datapoint():
     # Read the image file
     image = Image.open(uploaded_file)
     image.resize((200, 200)).convert('RGB').save("static/uploads/custom_image.jpg")
-    disease_model = load_model("models/inception_fine_tune.tflite")
-    # grade_model = load_model("models/pomogranate_grading.tflite")
+    # disease_model = load_model("models/inception_fine_tune.tflite")
+    grade_model = load_model("models/pomogranate_grading.tflite")
     img = preprocess_image("imgs/pomogranate.jpeg")
     
-    disease = predict_disease(disease_model, img)
-    # grade = predict_grade(grade_model, img)
+    # disease = predict_disease(disease_model, img)
+    grade = predict_grade(grade_model, img)
     
-    print("Predicted Disease:", disease)
-    # print("Predicted Grade:", grade)
+    # print("Predicted Disease:", disease)
+    print("Predicted Grade:", grade)
     # Load and preprocess the input image
     # Example target size (adjust according to your model's input size)
     target_size = (256, 256)
     input_image = preprocess_image(uploaded_file, target_size)
 
     # Make predictions using the loaded models
-    predicted_disease = predict_disease(disease_model, input_image)
-    # predicted_grade = predict_grade(grade_model, input_image)
+    # predicted_disease = predict_disease(disease_model, input_image)
+    predicted_grade = predict_grade(grade_model, input_image)
 
     # Additional information about managing and curing diseases
     disease_info = {
@@ -65,11 +65,11 @@ def predict_datapoint():
     }
 
     # Get additional information based on the detected disease
-    disease_additional_info = disease_info.get(predicted_disease, None)
+    # disease_additional_info = disease_info.get(predicted_disease, None)
 
     # Render the template with the predicted disease and additional information
     uploaded_image = url_for('static', filename='uploads/' + "custom_image.jpg")
-    return render_template('detect.html', disease=predicted_disease, uploaded_image=uploaded_image, disease_additional_info=disease_additional_info)
+    return render_template('detect.html', grade=predicted_grade, uploaded_image=uploaded_image)
 
 # Initialize YOLO model
 model = YOLO("./models/nano_best_10.pt")
